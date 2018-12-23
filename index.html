@@ -13,21 +13,32 @@
 </head>
 
 <body>
-<div class="jumbotron">
-    <h1 class="display-3">GifTastic</h1>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4"></div>
+    <div class="jumbotron py-4">
+        <h1 class="display-3">GifTastic</h1>
     </div>
-    <div class="row">
-        <div class="col-md-8"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 buttonBar">
+
+            </div>
+            <div class="col-md-4">
+                <form>
+                    <div class="form-group">
+                        <label for="input">Add a character</label>
+                        <input type="text" class="form-control" id="input" placeholder="character name...">
+                        <button type="submit" class="btn btn-primary mt-2 submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 gifHolder"></div>
+        </div>
     </div>
-</div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+        <script src="../GifTastic/assets/javascript/api.js"></script>
     <script src="../GifTastic/assets/javascript/javascript.js"></script>
 </body>
 
