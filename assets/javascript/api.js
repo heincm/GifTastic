@@ -1,8 +1,8 @@
 function getGifs(characterClick) {
 
-let character = characterClick;
-let searchLimit = 10;
-let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=FKFrLVSFTOXUw5CIZJKmbKJLXAALG0Af&q=" + character + "&limit=" + searchLimit + "&offset=0&rating=PG&lang=en&rating=g?&rating=pg"
+    let character = characterClick;
+    let searchLimit = 10;
+    let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=FKFrLVSFTOXUw5CIZJKmbKJLXAALG0Af&q=" + character + "&limit=" + searchLimit + "&offset=0&rating=PG&rating=g&lang=en"
 
 
     $.ajax({
@@ -15,9 +15,9 @@ let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=FKFrLVSFTOXUw5CIZJK
             let gifRating = $("<p>");
             gifRating.text("Gif Rating: " + response.data[g].rating);
             console.log(response.data[g].rating);
-            image.attr("src", response.data[g].images.original.url)
-            $(".gifHolder").prepend(image);
-            $(".gifHolder").prepend(gifRating);
+            image.attr("src", response.data[g].images.downsized_still.url).addClass(response.data[g].images.downsized.url).attr("value", "still").addClass("still");
+            $(".gifHolder").prepend(image); 
+            //$(".gifHolder").append(gifRating);
         }
     })
 };
