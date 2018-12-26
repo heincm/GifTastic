@@ -9,13 +9,6 @@ for (let i = 0; i < array.length; i++) {
     $(".buttonBar").append(button)
 }
 
-// register value when button is clicked
-/*$(".characterButton").on("click", function () {
-    console.log($(this).val());
-    // return $(this).val();
-    getGifs($(this).val());
-})*/
-
 // create new button based on user input
 $(".submit").on("click", function () {
     event.preventDefault();
@@ -28,8 +21,6 @@ $(".submit").on("click", function () {
 
     // push new items to userarray
     userArray.push($("#input").val().trim());
-    console.log(userArray);
-
     $("#input").val("");
 })
 
@@ -38,12 +29,16 @@ $(document).on("click", ".characterButton", function () {
     getGifs($(this).val());
 });
 
-
-$(document).on("click", ".still", function () {
-   let state = $(this)[0].classList[1]
-   console.log(state +"=============")
+$(document).on("click", "img", function () {
+    let state = $(this)[0].classList[0]
     if (state === "still") {
-        console.log("still")
-        state = ""
+        $(this).removeClass("still");
+        $(this).addClass("animated");
+        $(this).attr("src", $(this).attr("animated"))
+    } else {
+        $(this).removeClass("animated");
+        $(this).addClass("still");
+        $(this).attr("src", $(this).attr("still"))
     }
+    
 });
