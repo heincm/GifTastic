@@ -20,14 +20,14 @@ for (let i = 0; i < array.length; i++) {
 $(".submit").on("click", function () {
     event.preventDefault();
     let newButton = $("<button>");
-    newButton.text($("#input").val()).addClass("newButton characterButton").attr("value", $("#input").val());
+    newButton.text($("#input").val().trim()).addClass("newButton characterButton").attr("value", $("#input").val().trim());
     $(".newButtonBar").append(newButton);
 
     // check array for existing value
     //if (("#input").val() === )
 
     // push new items to userarray
-    userArray.push($("#input").val());
+    userArray.push($("#input").val().trim());
     console.log(userArray);
 
     $("#input").val("");
@@ -36,4 +36,14 @@ $(".submit").on("click", function () {
 // register value when button is clicked
 $(document).on("click", ".characterButton", function () {
     getGifs($(this).val());
+});
+
+
+$(document).on("click", ".still", function () {
+   let state = $(this)[0].classList[1]
+   console.log(state +"=============")
+    if (state === "still") {
+        console.log("still")
+        state = ""
+    }
 });
