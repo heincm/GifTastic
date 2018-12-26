@@ -11,11 +11,14 @@ function getGifs(characterClick) {
     }).then(function (response) {
         console.log(response);
         for (let g = 0; g < searchLimit; g++) {
+            console.log(response)
             let image = $("<img>");
             let gifRating = $("<p>");
             gifRating.text("Gif Rating: " + response.data[g].rating);
             console.log(response.data[g].rating);
-            image.attr("src", response.data[g].images.downsized_still.url).addClass(response.data[g].images.downsized.url).attr("value", "still").addClass("still");
+            image.attr("src", response.data[g].images.downsized_still.url)
+            .attr("still", response.data[g].images.downsized_still.url)
+            .attr("animated", response.data[g].images.downsized.url).addClass("still");
             $(".gifHolder").prepend(image); 
             //$(".gifHolder").append(gifRating);
         }
