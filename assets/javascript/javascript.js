@@ -15,7 +15,7 @@ $(".submit").on("click", function () {
     let newButton = $("<button>");
 
     // check array for existing value
-    if (userArray.includes($("#input").val().toLowerCase())) {
+    if (userArray.includes($("#input").val().trim().toLowerCase())) {
         console.log("already here, bruh!")
     } else {
         userArray.push($("#input").val().trim().toLowerCase());
