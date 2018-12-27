@@ -19,9 +19,17 @@ function getGifs(characterClick) {
             image.attr("src", response.data[g].images.downsized_still.url)
                 .attr("still", response.data[g].images.downsized_still.url)
                 .attr("animated", response.data[g].images.downsized.url).addClass("still");
-            $(".gifHolder").prepend(image);
             $(".gifHolder").prepend(gifRating);
-            //gifRating.appendTo(image);
+            $(".gifHolder").prepend(image);
         }
+    }).catch(function (event) {
+        console.log(event);
+        console.log("I'm broken, yo!");
+        let photo = $("<img src='https://media2.giphy.com/media/xT9IgIc0lryrxvqVGM/giphy-downsized.gif'/>");
+        let notWorking = $("<p>Uh oh....something's not quite right. Try again later</p>");
+        let lineBreak = $("<br>")
+        $(".gifHolder").prepend(photo);
+        $(".gifHolder").prepend(notWorking);
+        $(".gifHolder").prepend(lineBreak)
     })
 };
