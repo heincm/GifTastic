@@ -11,7 +11,6 @@ function getGifs(characterClick) {
     }).then(function (response) {
 
         for (let g = 0; g < searchLimit; g++) {
-            console.log(response)
             let still = response.data[g].images.downsized_still.url
             let animated = response.data[g].images.downsized.url
             let title = response.data[g].title

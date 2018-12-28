@@ -3,18 +3,18 @@ let array = ["Mario", "Luigi", "Link", "Kirby", "Yoshi", "Captain Falcon"];
 let userArray = [];
 let storedUserInput = [];
 
-function createButton(){
+function createButton() {
     let newButton = $("<button>");
-    newButton.text($("#input").val().trim()).addClass("newButton characterButton btn btn-info").attr("value", $("#input").val().trim()).attr("draggable", "true",).attr("ondragstart", "drag(event)").attr("id", $("#input").val().trim());
+    newButton.text($("#input").val().trim()).addClass("newButton characterButton btn btn-info")
+    .attr("value", $("#input").val().trim()).attr("draggable", "true").attr("ondragstart", "drag(event)")
+    .attr("id", $("#input").val().trim());
     $(".newButtonBar").append(newButton);
 }
 
 // create buttons for each item in the array
 for (let i = 0; i < array.length; i++) {
-    //let button = $("<button>");
-    //text(array[i]).attr("id", array[i]).attr("value", array[i]).addClass("characterButton").attr("draggable", "true").attr("ondragstart", "drag(event)");
     $(".buttonBar").append(`
-        <button class="characterButton btn btn-info" id="${array[i]}" value="${array[i]}" draggable="true" ondragstart="drag(event)">${array[i]}</button>
+        <button class="characterButton btn btn-info" id="${array[i]}" value="${array[i]}">${array[i]}</button>
     `)
 };
 
@@ -31,7 +31,6 @@ $(".submit").on("click", function () {
         createButton();
     }
     $("#input").val("");
-    console.log(userArray);
 });
 
 // register value when button is clicked
@@ -53,14 +52,14 @@ $(document).on("click", "img", function () {
 // testing out draggable items
 function allowDrop(ev) {
     ev.preventDefault();
-  }
-  
-  function drag(ev) {
+}
+
+function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-  }
-  
-  function drop(ev) {
+}
+
+function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-  }
+}
