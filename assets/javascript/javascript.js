@@ -1,5 +1,5 @@
 // array to get buttons started
-let array = ["Mario", "Luigi", "Link", "Kirby", "Yoshi", "Captain Falcon"];
+let array = ["Mario", "Luigi", "Link", "Kirby", "Yoshi", "Captain Falcon", "Princess Peach", "Toad", "King Koopa", "Bowers"];
 let userArray = [];
 let storedUserInput = [];
 
