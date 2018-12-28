@@ -14,13 +14,18 @@ function getGifs(characterClick) {
             let still = response.data[g].images.downsized_still.url
             let animated = response.data[g].images.downsized.url
             $(".gifHolder").prepend(`
-            <p>Gif Rating: ${response.data[g].rating}</p>
-            <img src="${still}" still="${still}" animated="${animated}" data-state="still"/>`)
+            <div class="gifDiv mb-1">
+                <p class="text-center">Gif Rating: ${response.data[g].rating}</p>
+                <img class="mb-3" src="${still}" still="${still}" animated="${animated}" data-state="still"/>
+            </div>
+            `)
         }
     }).catch(function (event) {
-        $(".gifHolder").prepend(`<p>Uh oh....something's not quite right. Try again later</p>
-        <img src='https://media2.giphy.com/media/xT9IgIc0lryrxvqVGM/giphy-downsized.gif'/>
-        <br>
+        $(".gifHolder").prepend(`
+        <div class="gifDiv mb-1">
+            <p>Uh oh....something's not quite right. Try again later</p>
+            <img class="mb-2" src='https://media2.giphy.com/media/xT9IgIc0lryrxvqVGM/giphy-downsized.gif'/>
+        </div>
         `);
     })
 };
