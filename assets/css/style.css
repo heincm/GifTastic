@@ -24,3 +24,7 @@ p {
 h5, p {
     text-transform: capitalize;
 }
+
+.favoriteButtons {
+    min-height: 2em;
+}
