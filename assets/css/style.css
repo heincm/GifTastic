@@ -8,5 +8,11 @@ img {
     max-width: 200px;
     height: auto;
     border: 2px solid blue;
-    margin: 0 0.5em 0.5em 0;
+    display: inline-block;
+}
+
+.gifDiv {
+    width: 300px;
+    background-color: purple;
+    text-align: center;
 }
