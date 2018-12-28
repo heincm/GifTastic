@@ -13,6 +13,14 @@ img {
 
 .gifDiv {
     width: 300px;
-    background-color: purple;
+    background-color: rgba(128, 0, 128, 0.116);
     text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
+
+h5, p {
+    text-transform: capitalize;
 }

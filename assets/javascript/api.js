@@ -11,12 +11,15 @@ function getGifs(characterClick) {
     }).then(function (response) {
 
         for (let g = 0; g < searchLimit; g++) {
+            console.log(response)
             let still = response.data[g].images.downsized_still.url
             let animated = response.data[g].images.downsized.url
+            let title = response.data[g].title
             $(".gifHolder").prepend(`
             <div class="gifDiv mb-1">
+                <h5>${title}</h5>
+                <img src="${still}" still="${still}" animated="${animated}" data-state="still"/>
                 <p class="text-center">Gif Rating: ${response.data[g].rating}</p>
-                <img class="mb-3" src="${still}" still="${still}" animated="${animated}" data-state="still"/>
             </div>
             `)
         }
