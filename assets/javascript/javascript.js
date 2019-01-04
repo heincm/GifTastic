@@ -1,8 +1,10 @@
 // array to get buttons started
 let array = ["Mario", "Luigi", "Link", "Kirby", "Yoshi", "Captain Falcon", "Princess Peach", "Toad", "Bowser"];
 let userArray = [];
-let storedUserInput = [];
 let favGifs = JSON.parse(localStorage.getItem("User Input"))
+if (!Array.isArray(favGifs)) {
+    favGifs = []
+}
 
 function createButton() {
     let inputValue = $("#input").val().trim()
@@ -27,11 +29,12 @@ $(".submit").on("click", function () {
     event.preventDefault();
     let userInput = $("#input").val().trim().toLowerCase()
 
-    // check array for existing value
+    // check array for existing value and push to the user array if it doens't exist
     if (!userArray.includes(userInput)) {
         userArray.push(userInput);
         createButton();
     }
+
     $("#input").val("");
 });
 
@@ -59,12 +62,13 @@ $(document).on("click", ".favButton", function () {
     img.attr("src", gifUrl)
     $(".favoriteGifs").prepend(newDiv)
     newDiv.append(img)
-    storedUserInput.push(JSON.stringify(gifUrl));
-    localStorage.setItem("User Input", JSON.stringify(storedUserInput));
+    favGifs.push(JSON.stringify(gifUrl));
+    localStorage.setItem("User Input", JSON.stringify(favGifs));
 });
 
 
 function loadFavs() {
+
     for (let h = 0; h < favGifs.length; h++) {
         let newDiv = $("<div>");
         let img = $("<img>")
@@ -74,6 +78,7 @@ function loadFavs() {
         newDiv.append(img)
     }
 }
+
 loadFavs();
 
 /* Removed draggable event for now as unable to figure out data transfer. Will attempt later.
