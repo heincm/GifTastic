@@ -3,6 +3,8 @@ let array = ["Mario", "Luigi", "Link", "Kirby", "Yoshi", "Captain Falcon", "Prin
 let userArray = [];
 let storedUserInput = [];
 
+//console.log(JSON.parse(localStorage.getItem("User Input")));
+
 function createButton() {
     let inputValue = $("#input").val().trim()
     let newButton = $("<button>");
@@ -51,15 +53,19 @@ $(document).on("click", "img", function () {
 
 // add favorite gifs to favorites section and store in local storage
 $(document).on("click", ".favButton", function () {
-    let newDiv = $("<div>");
-    let img = $("<img>")
-    newDiv.addClass("gifDiv mb-1")
-    img.attr("src", ($(this).val() ))
-    $(".favoriteGifs").append(newDiv)
-    newDiv.append(img)
+    event.preventDefault();
+    //if (!JSON.parse(storedUserInput).includes($(this).val())) {
 
-    storedUserInput.push(JSON.stringify($(this).val()));
-    localStorage.setItem("User Input", storedUserInput);
+        let newDiv = $("<div>");
+        let img = $("<img>")
+        newDiv.addClass("gifDiv mb-1")
+        img.attr("src", ($(this).val()))
+        $(".favoriteGifs").append(newDiv)
+        newDiv.append(img)
+
+        storedUserInput.push(JSON.stringify($(this).val()));
+        localStorage.setItem("User Input", JSON.stringify(storedUserInput));
+    //}
 });
 
 /* Removed draggable event for now as unable to figure out data transfer. Will attempt later.
