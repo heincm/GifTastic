@@ -4,8 +4,6 @@ let userArray = [];
 let storedUserInput = [];
 let favGifs = JSON.parse(localStorage.getItem("User Input"))
 
-console.log("HELLO " + favGifs);
-
 function createButton() {
     let inputValue = $("#input").val().trim()
     let newButton = $("<button>");
@@ -52,14 +50,9 @@ $(document).on("click", "img", function () {
     }
 });
 
-let yourMama = 0;
 // add favorite gifs to favorites section and store in local storage
 $(document).on("click", ".favButton", function () {
-    event.preventDefault();
-    yourMama++
     let gifUrl = $(this).val();
-    //if (!JSON.parse(storedUserInput).includes($(this).val())) {
-
     let newDiv = $("<div>");
     let img = $("<img>")
     newDiv.addClass("gifDiv mb-1")
@@ -67,9 +60,7 @@ $(document).on("click", ".favButton", function () {
     $(".favoriteGifs").prepend(newDiv)
     newDiv.append(img)
     storedUserInput.push(JSON.stringify(gifUrl));
-    console.log(JSON.stringify("gifUrl " + yourMama + " " + gifUrl))
     localStorage.setItem("User Input", JSON.stringify(storedUserInput));
-    //}
 });
 
 
