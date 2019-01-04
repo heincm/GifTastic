@@ -2,8 +2,9 @@
 let array = ["Mario", "Luigi", "Link", "Kirby", "Yoshi", "Captain Falcon", "Princess Peach", "Toad", "Bowser"];
 let userArray = [];
 let storedUserInput = [];
+let favGifs = JSON.parse(localStorage.getItem("User Input"))
 
-//console.log(JSON.parse(localStorage.getItem("User Input")));
+console.log("HELLO " + favGifs);
 
 function createButton() {
     let inputValue = $("#input").val().trim()
@@ -51,22 +52,38 @@ $(document).on("click", "img", function () {
     }
 });
 
+let yourMama = 0;
 // add favorite gifs to favorites section and store in local storage
 $(document).on("click", ".favButton", function () {
     event.preventDefault();
+    yourMama++
+    let gifUrl = $(this).val();
     //if (!JSON.parse(storedUserInput).includes($(this).val())) {
 
+    let newDiv = $("<div>");
+    let img = $("<img>")
+    newDiv.addClass("gifDiv mb-1")
+    img.attr("src", gifUrl)
+    $(".favoriteGifs").prepend(newDiv)
+    newDiv.append(img)
+    storedUserInput.push(JSON.stringify(gifUrl));
+    console.log(JSON.stringify("gifUrl " + yourMama + " " + gifUrl))
+    localStorage.setItem("User Input", JSON.stringify(storedUserInput));
+    //}
+});
+
+
+function loadFavs() {
+    for (let h = 0; h < favGifs.length; h++) {
         let newDiv = $("<div>");
         let img = $("<img>")
         newDiv.addClass("gifDiv mb-1")
-        img.attr("src", ($(this).val()))
-        $(".favoriteGifs").append(newDiv)
+        img.attr("src", favGifs[h].replace(/\"/g, ""))
+        $(".favoriteGifs").prepend(newDiv)
         newDiv.append(img)
-
-        storedUserInput.push(JSON.stringify($(this).val()));
-        localStorage.setItem("User Input", JSON.stringify(storedUserInput));
-    //}
-});
+    }
+}
+loadFavs();
 
 /* Removed draggable event for now as unable to figure out data transfer. Will attempt later.
 

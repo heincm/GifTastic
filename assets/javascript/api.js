@@ -8,7 +8,6 @@ function getGifs(characterClick, searchLimit) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response)
         for (let g = 0; g < searchLimit; g++) {
             let still = response.data[g].images.downsized_still.url
             let animated = response.data[g].images.downsized.url
