@@ -4,18 +4,22 @@ let userArray = [];
 let storedUserInput = [];
 
 function createButton() {
+    let inputValue = $("#input").val().trim()
     let newButton = $("<button>");
-    newButton.text($("#input").val().trim()).addClass("newButton characterButton btn btn-info")
-    .attr("value", $("#input").val().trim()).attr("draggable", "true").attr("ondragstart", "drag(event)")
-    .attr("id", $("#input").val().trim());
-    $(".newButtonBar").append(newButton);
+    newButton.text(inputValue).addClass("newButton characterButton btn btn-info")
+        .attr("value", inputValue).attr("id", inputValue);
+
+    // Removed draggable event for the time being .attr("draggable", "true").attr("ondragstart", "drag(event)")
+
+    $(".newButtonBar").append(newButton)//.append(`<input type="checkbox" value="${inputValue}" class="checkbox"/>`);
 }
 
 // create buttons for each item in the array
 for (let i = 0; i < array.length; i++) {
     $(".buttonBar").append(`
         <button class="characterButton btn btn-info" id="${array[i]}" value="${array[i]}">${array[i]}</button>
-    `)
+        <input type="checkbox" value="${array[i]}" class="checkbox"/>
+        `)
 };
 
 // create new button based on user input
@@ -26,8 +30,6 @@ $(".submit").on("click", function () {
     // check array for existing value
     if (!userArray.includes(userInput)) {
         userArray.push(userInput);
-        storedUserInput.push(JSON.stringify(userInput))
-        localStorage.setItem("User Input", storedUserInput);
         createButton();
     }
     $("#input").val("");
@@ -35,7 +37,7 @@ $(".submit").on("click", function () {
 
 // register value when button is clicked
 $(document).on("click", ".characterButton", function () {
-    getGifs($(this).val());
+    getGifs($(this).val(), 10);
 });
 
 // change src from still to animated src on click event
@@ -46,8 +48,21 @@ $(document).on("click", "img", function () {
     } else {
         $(this).attr("data-state", "still").attr("src", $(this).attr("still"));
     }
-
 });
+
+$(document).on("click", ".favButton", function () {
+    let newDiv = $("<div>");
+    let img = $("<img>")
+    newDiv.addClass("gifDiv mb-1")
+    img.attr("src", ($(this).val() ))
+    $(".favoriteGifs").append(newDiv)
+    newDiv.append(img)
+
+    storedUserInput.push(JSON.stringify($(this).val()));
+    localStorage.setItem("User Input", storedUserInput);
+});
+
+/* Removed draggable event for now as unable to figure out data transfer. Will attempt later.
 
 // testing out draggable items
 function allowDrop(ev) {
@@ -63,3 +78,4 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
 }
+*/
