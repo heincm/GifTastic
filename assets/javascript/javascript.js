@@ -18,7 +18,6 @@ function createButton() {
 for (let i = 0; i < array.length; i++) {
     $(".buttonBar").append(`
         <button class="characterButton btn btn-info" id="${array[i]}" value="${array[i]}">${array[i]}</button>
-        <input type="checkbox" value="${array[i]}" class="checkbox"/>
         `)
 };
 
@@ -50,6 +49,7 @@ $(document).on("click", "img", function () {
     }
 });
 
+// add favorite gifs to favorites section and store in local storage
 $(document).on("click", ".favButton", function () {
     let newDiv = $("<div>");
     let img = $("<img>")
