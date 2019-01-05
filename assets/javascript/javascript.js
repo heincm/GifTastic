@@ -1,10 +1,6 @@
 // array to get buttons started
 let array = ["Mario", "Luigi", "Link", "Kirby", "Yoshi", "Captain Falcon", "Princess Peach", "Toad", "Bowser"];
 let userArray = [];
-let favGifs = JSON.parse(localStorage.getItem("User Input"))
-if (!Array.isArray(favGifs)) {
-    favGifs = []
-}
 
 function createButton() {
     let inputValue = $("#input").val().trim()
@@ -77,6 +73,11 @@ function loadFavs() {
         $(".favoriteGifs").prepend(newDiv)
         newDiv.append(img)
     }
+}
+
+let favGifs = JSON.parse(localStorage.getItem("User Input"))
+if (!Array.isArray(favGifs)) {
+    favGifs = []
 }
 
 loadFavs();
