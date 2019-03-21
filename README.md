@@ -15,11 +15,13 @@ Users can use the input area to generate their own buttons to click and generate
 
 #### About the gifs
 The gifs will first load as still images. When users click upon the images, the images will become animated. Click again, and the gifs will return to the still state. 
+
 ![animate](assets/Images/animate.gif)
 
 
 #### Adding favorites
-Below each generated gif, users will see a button allowing them to add a gif to their favorite gifs. This will move the selected gif to the "favorites" section. 
+Below each generated gif, users will see a button allowing them to add a gif to their favorite gifs. This will move the selected gif to the "favorites" section.
+ 
 ![add_favorite](assets/Images/add_favorite.gif)
 
 
